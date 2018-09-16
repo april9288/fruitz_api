@@ -8,20 +8,21 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/test', (req, res)=> {
+app.get('/', (req, res)=> {
+
+	let response = "hello";
+	res.send(response);
+
+})
+
+
+app.post('/add', (req, res)=> {
 	const rate = new Ratings({
-		email: req.body.email,
-		rate: req.body.rate
+		email : req.body.email,
+		lastrate : req.body.lastrate,
+		updated : req.body.updated,
+		rate: req.body.rate	
 	})
-
-	// console.log(req.body.email);
-	// console.log(req.body.rate);
-
-	// const rateObj = {};
-	// rateObj["email"] = req.body.email;
-	// rateObj["rate"] = req.body.rate;
-	// res.send(rateObj);
-
 	rate.save().then((doc)=>{
 		res.send(doc);
 	}, (e) => {
