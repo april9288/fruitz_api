@@ -9,10 +9,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res)=> {
-
-	let response = "hello";
+	let response = "fruitz api";
 	res.send(response);
-
 })
 
 
